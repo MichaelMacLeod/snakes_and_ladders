@@ -104,7 +104,7 @@ describe("Game", function(){
     game = createGame();
     game.incrementTurn();
     assert.equal(1, game.turn);
-  })
+  });
   it('should make the next turn 0 when the current turn is 3', function(){
     game = createGame();
     game.turn = 3;
@@ -119,7 +119,9 @@ describe("Game", function(){
   })
 });
 
-//5. Turn counter: 
+var testGame = createGame();
+testGame.nextTurn();
+
 
 
 

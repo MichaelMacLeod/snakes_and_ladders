@@ -26,14 +26,35 @@ Game.prototype = {
   nextTurn: function(){
     var player = this.players[this.turn];
     var roll = this.dice.roll();
+    var previousPosition = player.currentPosition;
     player.currentPosition += roll;
+    if (player.currentPosition > 99){
+      player.currentPosition = 99
+    }
+
+    this.showTurn(player, previousPosition, roll);
+    
     var winner = this.checkForWinners();
     if (winner) {
+      console.log('*********** ' +player.name +' HAS WON!' + '***********')
       return 'The winner is ' +player.name;
     }
     this.incrementTurn();
     this.nextTurn();
   },
+  showTurn: function(player, previousPosition, roll){
+    console.log(player.name +' rolled a ' +roll + ' and moved from ' + previousPosition + ' and is now on ' +player.currentPosition);
+  }
 }
 
 module.exports = Game;
+
+
+
+
+
+
+
+
+
+
